@@ -34,14 +34,14 @@ if __name__ == '__main__':
     from net import NTK
 
     device = 'cpu'
-    model = NTK(28 * 28, 10**4).to(device)
+    model = NTK(3*32 * 32, 10**4).to(device)
     optimizer=torch.optim.Adam(model.parameters())
     criterion=nn.CrossEntropyLoss()
     epoch=100
     bachsize=2048
     savefolder='out/exp_10000'
     writer={}
-    trainloader = torch.utils.data.DataLoader(torchvision.datasets.MNIST(root='./data',
+    trainloader = torch.utils.data.DataLoader(torchvision.datasets.CIFAR100(root='./data',
                                                                          train=True,
                                                                          download=True,
                                                                          transform=transforms.Compose(
@@ -50,7 +50,7 @@ if __name__ == '__main__':
                                               batch_size=bachsize,
                                               shuffle=True,
                                               num_workers=8)
-    valloader = torch.utils.data.DataLoader(torchvision.datasets.MNIST(root='./data',
+    valloader = torch.utils.data.DataLoader(torchvision.datasets.CIFAR100(root='./data',
                                                                    train=False,
                                                                    download=True,
                                                                    transform=transforms.Compose(
