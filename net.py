@@ -13,7 +13,7 @@ class Linear(nn.Linear):
 
 
 class NTK(nn.Module):
-    def __init__(self,in_feature,inter_feature,out_feature=10):
+    def __init__(self,in_feature,inter_feature,out_feature):
         super(NTK, self).__init__()
         self.fc1=Linear(in_feature,inter_feature)
         self.fc2=Linear(inter_feature,inter_feature)

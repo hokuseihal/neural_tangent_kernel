@@ -34,7 +34,7 @@ if __name__ == '__main__':
     from net import NTK
 
     device = 'cpu'
-    model = NTK(3*32 * 32, 10**4).to(device)
+    model = NTK(3*32 * 32, 10**4,100).to(device)
     optimizer=torch.optim.Adam(model.parameters())
     criterion=nn.CrossEntropyLoss()
     epoch=100
